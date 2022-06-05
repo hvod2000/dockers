@@ -1,0 +1,7 @@
+#!/bin/sh
+[ -d /data ] && uid=$(stat -c '%u' /data) || uid=8888
+useradd -mlu$uid jupyter
+desktop=/home/jupyter/Desktop
+[ -d /data ] && ln -s /data "$desktop" || doas -u jupyter mkdir "$desktop"
+cd /home/jupyter
+doas -u jupyter -- "$@"
