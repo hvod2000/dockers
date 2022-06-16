@@ -14,4 +14,4 @@ RUN echo 'root:'$(date +%s | sha256sum | base64 | head -c64) | chpasswd
 ADD entrypoint /usr/bin/entrypoint
 ENTRYPOINT ["entrypoint"]
 
-CMD cd Desktop && jupyter notebook  --NotebookApp.token='' --NotebookApp.password='' --port=80 --ip 0.0.0.0
+CMD cd Desktop && jupyter notebook  --NotebookApp.token='' --NotebookApp.password='' --port=8080 --ip 0.0.0.0
