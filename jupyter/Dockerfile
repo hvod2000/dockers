@@ -1,7 +1,8 @@
 # syntax=docker/dockerfile:1
 
 FROM archlinux
-RUN echo 'Server = http://ftp.byfly.by/pub/archlinux/$repo/os/$arch' > /etc/pacman.d/mirrorlist 
+RUN echo 'Server = http://ftp.byfly.by/pub/archlinux/$repo/os/$arch' > /etc/pacman.d/mirrorlist
+RUN echo 'Server = http://mirror.datacenter.by/pub/archlinux/$repo/os/$arch' > /etc/pacman.d/mirrorlist
 RUN pacman -Syyu --noconfirm
 RUN pacman-db-upgrade
 RUN pacman -S maxima-ecl --noconfirm
