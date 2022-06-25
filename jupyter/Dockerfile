@@ -14,6 +14,7 @@ RUN pacman -S python-frozendict --noconfirm
 RUN pacman -Scc --noconfirm
 RUN echo permit nopass :root > /etc/doas.conf
 RUN echo 'root:'$(date +%s | sha256sum | base64 | head -c64) | chpasswd
+RUN echo 'root:'$(</dev/random head -c2048 | sha256sum | base64 | head -c64) | chpasswd
 ADD entrypoint /usr/bin/entrypoint
 ENTRYPOINT ["entrypoint"]
 
